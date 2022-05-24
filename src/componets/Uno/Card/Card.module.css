@@ -1,0 +1,76 @@
+.card {
+    width: 150px;
+    height: 250px;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numberCard {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.cardContent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-10deg);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.ellipse {
+    position: absolute;
+    inset: 0;
+    top: 5%;
+    left: 7%;
+    right: 7%;
+    bottom: 5%;
+    border-radius: 50%;
+    border: 5px solid white;
+    transform: rotate(10deg);
+}
+
+.innerCard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    clip-path: ellipse(39.64% 43.25% at center center);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(10deg);
+}
+
+.red {
+    background-color: #d00000;
+}
+
+.innerCard:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: rotate(-10deg);
+}
+
+.red  > .innerCard:before {
+    background: url('/public/static/calli.jpg') center/cover;
+}
+
+.green {
+    background-color: #399139;
+}
+
+.yellow {
+    background-color: #bb0;
+}
+
+.blue {
+    background-color: #4343ff;
+}

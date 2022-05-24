@@ -1,0 +1,42 @@
+.image {
+    object-fit: contain;
+    transition: opacity 0.3s ease-in;
+}
+
+.imageLoad {
+    opacity: 0;
+}
+
+.imageLoaded {
+    opacity: 1;
+}
+
+.loadWrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: loadIn;
+    animation-duration: 0.3s;
+    margin: auto;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border-width: 2px;
+}
+
+.container {
+    position: relative;
+}
+
+@keyframes loadIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
