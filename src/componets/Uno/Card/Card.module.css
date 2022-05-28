@@ -6,11 +6,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 4px solid gray;
 }
 
 .numberCard {
     font-size: 100px;
     margin-bottom: 20px;
+}
+
+.top, .bottom {
+    position: absolute;
+    justify-content: space-between;
+    font-size: 25px;
+    right: 5px;
+    left: 5px;
+}
+
+.top {
+    top: 2px;
+}
+
+.bottom {
+    bottom: 2px;
+    flex-flow: row-reverse;
+}
+
+.img {
+    height: 25px;
+    width: 25px;
 }
 
 .cardContent {
@@ -20,7 +43,14 @@
     align-items: center;
     justify-content: center;
     transform: rotate(-10deg);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 0px 0 rgb(108, 108, 108),
+    1px 1px 0 rgb(88, 88, 88),
+    2px 2px 0 rgb(68, 68, 68),
+    3px 3px 0 rgb(48, 48, 48),
+    4px 4px 3px rgba(0, 0, 0, 1),
+    4px 4px 1px rgba(0, 0, 0, 0.5),
+    0px 0px 3px rgba(0, 0, 0, .2);
 }
 
 .ellipse {
@@ -31,7 +61,7 @@
     right: 7%;
     bottom: 5%;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 5px solid gray;
     transform: rotate(10deg);
 }
 
@@ -59,7 +89,7 @@
     transform: rotate(-10deg);
 }
 
-.red  > .innerCard:before {
+.red > .innerCard:before {
     background: url('/public/static/calli.jpg') center/cover;
 }
 
@@ -67,10 +97,22 @@
     background-color: #399139;
 }
 
+.green > .innerCard:before {
+    background: url('/public/static/ina.jpg') center/cover;
+}
+
 .yellow {
     background-color: #bb0;
 }
 
+.yellow > .innerCard:before {
+    background: url('/public/static/kiara.jpg') center/cover;
+}
+
 .blue {
     background-color: #4343ff;
+}
+
+.blue > .innerCard:before {
+    background: url('/public/static/gura.jpg') center/cover;
 }
