@@ -1,4 +1,6 @@
 
+export type t_ColorCard = {color: 'red'|'green'|'yellow'|'blue'} & (t_NumberCard | t_ActionCard);
+
 
 export type t_NumberCard = {
     type: "NumberCard",
@@ -7,7 +9,14 @@ export type t_NumberCard = {
 
 export type t_ActionCard = {
     type: "ActionCard",
-    value: "+2"|"Joker"|"Joker+4"|"DirectionSwitch"|"Stop"
+    value: "+2"|"Stop"|"DirectionSwitch"
 }
 
-export type t_Card = {color: 'red'|'green'|'yellow'|'blue'} & (t_NumberCard | t_ActionCard)
+export type t_SpecialCard = {
+    type: "SpecialCard",
+    value: "Joker"|"Joker+4",
+    color: 'black',
+    selectedColor?: t_ColorCard["color"]
+}
+
+export type t_Card = t_ColorCard|t_SpecialCard
