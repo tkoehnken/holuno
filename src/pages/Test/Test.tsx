@@ -8,6 +8,7 @@ const specials: t_SpecialCard["value"][] = ["Joker+4", "Joker"];
 
 const Test = () => {
     const [selectedColor, setSelectedColor] = useState<undefined | t_ColorCard["color"]>(undefined);
+    const [showBack,setShowBack] = useState(true);
 
     const genCards = () => {
 
@@ -43,8 +44,18 @@ const Test = () => {
                     value={'Joker'}
                     selectedColor={selectedColor}
                 />
-                {colors.map((color)=><Button type={"rectangle"} text={color} onClick={() => setSelectedColor(color)}/>)}
+                {colors.map((color) => <Button type={"rectangle"} text={color}
+                                               onClick={() => setSelectedColor(color)}/>)}
 
+            </div>
+            <div style={{marginTop: 20}}>
+                <Card
+                    color={"blue"}
+                    type={"NumberCard"}
+                    value={1}
+                    back={showBack}
+                    onClick={()=>setShowBack((s)=>!s)}
+                />
             </div>
         </>
     )

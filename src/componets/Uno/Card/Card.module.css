@@ -10,6 +10,14 @@
     transition: background-color 0.5s ease;
 }
 
+.back {
+ background: linear-gradient(180deg, black 0%, #d00000 20%, #4343ff 40%, #bb0 60%, #399139 80%, black 100%);
+}
+
+.back > .innerCard {
+    background-color: rgba(0,0,0,0.7);
+}
+
 .numberCard, .actionCard {
     font-size: 100px;
 }

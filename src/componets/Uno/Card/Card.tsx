@@ -7,6 +7,8 @@ import {FiHelpCircle, FiRefreshCcw, FiSlash} from "react-icons/fi";
 type t_props = t_Card & {
     style?: React.CSSProperties,
     className?: string,
+    back?: boolean,
+    onClick?: (value: t_Card) => void,
 };
 
 const CardNumber = ({value}: { value: t_NumberCard["value"] }) => <div className={styles.numberCard}>{value}</div>;
@@ -25,29 +27,25 @@ const CardAction = ({value, inner = true}: { value: t_ActionCard["value"], inner
             return <div className={className}>{value}</div>;
     }
 }
+const w = 150;
+const h = 250;
 
-const Joker = ({plusFour = false}: { plusFour?: boolean}) => (
+const Joker = ({plusFour = false}: { plusFour?: boolean }) => (
     <div className={styles.JokerContainer}>
-        <Row className={styles.JokerRow}>
-            <div className={`${styles.red} ${styles.JokerInner}`}>
-                <img alt={'red'} className={styles.JokerImg}
-                     src={`${process.env.PUBLIC_URL}/static/${getIcon("red")}`}/>
-            </div>
-            <div className={`${styles.blue} ${styles.JokerInner}`}>
-                <img alt={'blue'} className={styles.JokerImg}
-                     src={`${process.env.PUBLIC_URL}/static/${getIcon("blue")}`}/>
-            </div>
-        </Row>
-        <Row className={styles.JokerRow}>
-            <div className={`${styles.yellow} ${styles.JokerInner}`}>
-                <img alt={'yellow'} className={styles.JokerImg}
-                     src={`${process.env.PUBLIC_URL}/static/${getIcon("yellow")}`}/>
-            </div>
-            <div className={`${styles.green} ${styles.JokerInner}`}>
-                <img alt={'green'} className={styles.JokerImg}
-                     src={`${process.env.PUBLIC_URL}/static/${getIcon("green")}`}/>
-            </div>
-        </Row>
+        <svg height={h} width={w}>
+            <rect x={0} y={0} width={w / 2} height={h / 2} fill={"#d00000"}/>
+            <rect x={w / 2} y={0} width={w / 2} height={h / 2} fill={"#4343ff"}/>
+            <rect x={0} y={h / 2} width={w / 2} height={h / 2} fill={"#bb0"}/>
+            <rect x={w / 2} y={h / 2} width={w / 2} height={h / 2} fill={"#399139"}/>
+            <image className={styles.JokerImg} x={w / 4 + 5} y={h / 2 - 35}
+                   href={`${process.env.PUBLIC_URL}/static/${getIcon("red")}`}/>
+            <image className={styles.JokerImg} x={w / 2 + 10} y={h / 2 - 35}
+                   href={`${process.env.PUBLIC_URL}/static/${getIcon("blue")}`}/>
+            <image className={styles.JokerImg} x={w / 4 + 5} y={h / 2 + 15}
+                   href={`${process.env.PUBLIC_URL}/static/${getIcon("yellow")}`}/>
+            <image className={styles.JokerImg} x={w / 2 + 10} y={h / 2 + 15}
+                   href={`${process.env.PUBLIC_URL}/static/${getIcon("green")}`}/>
+        </svg>
         {plusFour && <div className={styles.JokerInnerFour}>
             <div style={{marginBottom: 25, marginRight: 10}}>+4</div>
         </div>}
@@ -56,7 +54,7 @@ const Joker = ({plusFour = false}: { plusFour?: boolean}) => (
 
 
 const SpecialCard = (props: t_SpecialCard) => (
-    <Joker plusFour={props.value === "Joker+4"} />
+    <Joker plusFour={props.value === "Joker+4"}/>
 )
 
 const getIcon = (color: t_ColorCard["color"]) => {
@@ -104,8 +102,27 @@ const InnerCard = (props: t_Card) => {
 }
 
 const Card = (props: t_props) => {
+
+    if (props.back)
+        return (
+            <div style={props.style} className={`${styles.card} ${styles.back}`}
+                 onClick={() => props.onClick && props.onClick({...props})}>
+                <div className={styles.innerCard}>
+                    <div className={styles.cardContent}>
+                        <div className={styles.numberCard}>
+                            <div style={{transform: "rotate(-70deg)", fontSize: 50, marginTop: 25}}>
+                                HolUno
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+
     return (
-        <div style={props.style} className={`${styles.card} ${styles[props.type==="SpecialCard"?props.selectedColor??props.color:props.color]} ${props.className ?? ''}`}>
+        <div style={props.style}
+             onClick={() => props.onClick && props.onClick({...props})}
+             className={`${styles.card} ${styles[props.type === "SpecialCard" ? props.selectedColor ?? props.color : props.color]} ${props.className ?? ''}`}>
             <TopBot {...props} top/>
             <div className={styles.innerCard}>
                 <div className={styles.cardContent}>
