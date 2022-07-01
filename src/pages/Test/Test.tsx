@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {t_Card, t_NumberCard, t_ActionCard, t_ColorCard, t_SpecialCard} from "types/Card";
-import {Button, Card, Row} from "componets";
+import {Button, Card, CardBack, Deck, Row} from "componets";
 
 const colors: t_ColorCard["color"][] = ["red", "blue", "green", "yellow"];
 const actions: t_ActionCard["value"][] = ["+2", "Stop", "DirectionSwitch"];
@@ -8,6 +8,8 @@ const specials: t_SpecialCard["value"][] = ["Joker+4", "Joker"];
 
 const Test = () => {
     const [selectedColor, setSelectedColor] = useState<undefined | t_ColorCard["color"]>(undefined);
+    const [turn,setTurn] = useState(false);
+    const [size,setSize] = useState(50);
 
     const genCards = () => {
 
@@ -37,14 +39,32 @@ const Test = () => {
                 }}>{cards.map((card) => <Card key={card.value} style={{margin: 10}} {...card} />)}</Row>)}
             </div>
             <div style={{marginTop: 20}}>
+                <Row style={{justifyContent: 'space-evenly'}}>
                 <Card
                     color={'black'}
                     type={'SpecialCard'}
                     value={'Joker'}
                     selectedColor={selectedColor}
                 />
-                {colors.map((color)=><Button type={"rectangle"} text={color} onClick={() => setSelectedColor(color)}/>)}
-
+                    <Card
+                        color={'black'}
+                        type={'SpecialCard'}
+                        value={'Joker+4'}
+                        selectedColor={selectedColor}
+                    />
+                    <CardBack />
+                    <Card
+                        color={"red"}
+                        type={"NumberCard"}
+                        value={0}
+                        turn={turn}
+                    />
+                </Row>
+                <Row>
+                {colors.map((color)=><Button key={color} type={"rectangle"} text={color} onClick={() => setSelectedColor(color)}/>)}
+                    <Button text={"turn"} onClick={()=>setTurn((t)=>!t)} />
+                </Row>
+                <Deck size={size} width={258} height={358} onClick={()=>setSize((s)=>s-1)} />
             </div>
         </>
     )

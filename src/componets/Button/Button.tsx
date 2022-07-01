@@ -8,7 +8,7 @@ type t_props = {
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
     className?: string,
     style?: React.CSSProperties,
-    type: "round" | "rectangle" | "transparent",
+    type?: "round" | "rectangle" | "transparent",
     loading?: boolean,
     text?: string,
     right?: boolean,
@@ -17,7 +17,7 @@ type t_props = {
 
 }
 
-const Button = ({className, text, onClick, loading, style, Icon, type, right, buttonType, disable}: t_props) => {
+const Button = ({className, text, onClick, loading, style, Icon, type= "rectangle", right, buttonType, disable}: t_props) => {
     const _style = (right ? {marginLeft: text ? 4 : undefined} : {marginRight: text ? 4 : undefined});
 
     return (

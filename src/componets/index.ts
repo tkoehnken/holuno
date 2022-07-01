@@ -3,7 +3,7 @@ import ActiveIndicator from './ActiveIndicator/ActiveIndicator';
 import Row from './Row/Row';
 import Image from './Image/Image';
 import LazyLoad from './LazyLoad/LazyLoad';
-import {Card} from './Uno';
+import {Card,CardBack,Deck} from './Uno';
 
 export {
     Button,
@@ -12,4 +12,6 @@ export {
     Image,
     LazyLoad,
     Card,
+    CardBack,
+    Deck
 }

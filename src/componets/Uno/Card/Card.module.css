@@ -43,6 +43,37 @@
     width: 25px;
 }
 
+.holuno {
+    font-size: 4em;
+    transform: rotate(-61deg);
+    margin-bottom: 15px;
+    margin-right: 10px;
+    text-shadow: 0px 0px 0 rgb(108, 108, 108),
+    1px 1px 0 rgb(88, 88, 88),
+    2px 2px 0 rgb(68, 68, 68),
+    3px 3px 0 rgb(48, 48, 48),
+    4px 4px 3px rgba(0, 0, 0, 1),
+    4px 4px 1px rgba(0, 0, 0, 0.5),
+    0px 0px 3px rgba(0, 0, 0, .2);
+}
+
+.backBackground {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.backBackground:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+}
+
 .cardContent,.JokerInnerFour {
     position: absolute;
     inset: 0;
@@ -107,7 +138,7 @@
 }
 
 .red > .innerCard:before {
-    background: url('/public/static/calli.jpg') center/cover;
+    background: url('/public/static/cards/red/main.png') center/cover;
 }
 
 .green {
@@ -115,7 +146,7 @@
 }
 
 .green > .innerCard:before {
-    background: url('/public/static/ina.jpg') center/cover;
+    background: url('/public/static/cards/green/main.png') center/cover;
 }
 
 .yellow {
@@ -123,7 +154,7 @@
 }
 
 .yellow > .innerCard:before {
-    background: url('/public/static/kiara.jpg') center/cover;
+    background: url('/public/static/cards/yellow/main.png') center/cover;
 }
 
 .blue {
@@ -131,7 +162,7 @@
 }
 
 .blue > .innerCard:before {
-    background: url('/public/static/gura.jpg') center/cover;
+    background: url('/public/static/cards/blue/main.png') center/cover;
 }
 
 .JokerContainer {
